@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'routes/app_routes.dart';
 import 'screens/login_screen.dart';
+import 'screens/register_screen.dart';
+import 'screens/home_screen.dart';
 import 'theme/app_theme.dart';
 
 void main() {
@@ -19,11 +21,10 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       initialRoute: AppRoutes.login,
       routes: {
-        AppRoutes.login:(context) => const LoginScreen(),
-        //AppRoutes.signup:(context) => const LoginScreen(),
-        //AppRoutes.home:(context) => const LoginScreen(),
-      }
+        AppRoutes.login: (context) => const LoginScreen(),
+        AppRoutes.register: (context) => const RegisterScreen(),
+        AppRoutes.home: (context) => const HomeScreen(),
+      },
     );
   }
 }
-

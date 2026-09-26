@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _goToSignUp() {
-    Navigator.pushNamed(context, AppRoutes.signup);
+    Navigator.pushNamed(context, AppRoutes.register);
   }
 
   // Helper for consistent rounded borders across all states
@@ -79,14 +79,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: 'Enter your email',
                         border: _roundedBorder(AppTheme.border),
                         enabledBorder: _roundedBorder(AppTheme.border),
-                        focusedBorder: _roundedBorder(Theme.of(context).primaryColor),
+                        focusedBorder: _roundedBorder(
+                          Theme.of(context).primaryColor,
+                        ),
                         errorBorder: _roundedBorder(Colors.red),
                         focusedErrorBorder: _roundedBorder(Colors.red),
                       ),
                       validator: (value) =>
                           (value == null || !value.contains('@'))
-                              ? 'Enter a valid email'
-                              : null,
+                          ? 'Enter a valid email'
+                          : null,
                     ),
                     const SizedBox(height: 18),
 
@@ -100,7 +102,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: 'Enter your password',
                         border: _roundedBorder(AppTheme.border),
                         enabledBorder: _roundedBorder(AppTheme.border),
-                        focusedBorder: _roundedBorder(Theme.of(context).primaryColor),
+                        focusedBorder: _roundedBorder(
+                          Theme.of(context).primaryColor,
+                        ),
                         errorBorder: _roundedBorder(Colors.red),
                         focusedErrorBorder: _roundedBorder(Colors.red),
                         suffixIcon: IconButton(
@@ -112,7 +116,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             size: 20,
                           ),
                           onPressed: () => setState(
-                              () => _obscurePassword = !_obscurePassword),
+                            () => _obscurePassword = !_obscurePassword,
+                          ),
                         ),
                       ),
                       validator: (value) => (value == null || value.isEmpty)
@@ -132,8 +137,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: Text(
                           'Forgot Password?',
-                          style: textTheme.bodyMedium
-                              ?.copyWith(color: Theme.of(context).primaryColor),
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                       ),
                     ),
@@ -150,8 +156,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         const Expanded(child: Divider(color: AppTheme.border)),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child:
-                              Text('or login with', style: textTheme.bodyMedium),
+                          child: Text(
+                            'or login with',
+                            style: textTheme.bodyMedium,
+                          ),
                         ),
                         const Expanded(child: Divider(color: AppTheme.border)),
                       ],
@@ -164,9 +172,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         _socialIcon('assets/google_logo.png'),
                         const SizedBox(width: 16),
-                        _socialIcon('assets/facebook_logo.png'), 
+                        _socialIcon('assets/facebook_logo.png'),
                         const SizedBox(width: 16),
-                        _socialIcon('assets/apple_logo.png', iconWidth: 50, iconHeight: 50),
+                        _socialIcon(
+                          'assets/apple_logo.png',
+                          iconWidth: 50,
+                          iconHeight: 50,
+                        ),
                       ],
                     ),
                     const SizedBox(height: 32),
@@ -174,8 +186,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Don't have an account? ",
-                            style: textTheme.bodyMedium),
+                        Text(
+                          "Don't have an account? ",
+                          style: textTheme.bodyMedium,
+                        ),
                         GestureDetector(
                           onTap: _goToSignUp,
                           child: Text(
@@ -198,8 +212,12 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-// Changed to accept a local asset path and optional custom dimensions
-  Widget _socialIcon(String assetPath, {double iconWidth = 24, double iconHeight = 24}) {
+  // Changed to accept a local asset path and optional custom dimensions
+  Widget _socialIcon(
+    String assetPath, {
+    double iconWidth = 24,
+    double iconHeight = 24,
+  }) {
     return Container(
       width: 80,
       height: 50,
